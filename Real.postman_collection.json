@@ -1,0 +1,1880 @@
+{
+	"info": {
+		"_postman_id": "096df513-00ff-4cac-bfea-3e0ae1e468ac",
+		"name": "Real",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33935759"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Register - Unsuccessful",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"var jasonFile = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Verify Unsuccessful Registration request status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Unsuccessful Registration request error message value\", function () {\r",
+									"    pm.expect(jasonFile.error).to.be.equal(\"Missing password\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/register',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									" \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sydney@fife\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/register",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register - Successful",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"var jasonFile = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct properties\", function () {\r",
+									"    pm.expect(jasonFile).to.have.property('id').that.is.a('number');\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"    pm.expect(jasonFile).to.have.property('token').that.is.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct values\", function () {\r",
+									"    pm.expect(jasonFile.id).to.equal(4);\r",
+									"    pm.expect(jasonFile.token).to.equal('QpwL5tke4Pnpja7X4');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Content-Type header\", function () {\r",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");\r",
+									"    pm.expect(contentType).to.exist;\r",
+									"    pm.expect(contentType).to.include(\"application/json\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/register',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									"  \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n\r\n \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/register",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login Successful",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"var jasonFile = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct values\", function () {\r",
+									"    pm.expect(jasonFile.token).to.equal('QpwL5tke4Pnpja7X4');\r",
+									"});\r",
+									"pm.test(\"Check Content-Type header\", function () {\r",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");\r",
+									"    pm.expect(contentType).to.exist;\r",
+									"    pm.expect(contentType).to.include(\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/login",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Unsucessful",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"var jasonFile = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Verify Unsuccessful Login request status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify Unsuccessful Login request error message value\", function () {\r",
+									"    pm.expect(jasonFile.error).to.be.equal(\"Missing password\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/login',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									"   \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"peter@klaven\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/login",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Get all users in page 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									" pm.sendRequest({\r",
+									"        url: 'https://reqres.in/api/users',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"      \r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        \r",
+									"    });\r",
+									"\r",
+									"var jasonFile = pm.response.json();\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches page-1 pair\", function () {\r",
+									"    pm.expect(jasonFile.page).to.equal(1);\r",
+									"});\r",
+									"pm.test(\"Body matches per_page-6\", function () {\r",
+									"    pm.expect(jasonFile.per_page).to.equal(6);\r",
+									"});\r",
+									"pm.test(\"Body matches total_pages-2\", function () {\r",
+									"    pm.expect(jasonFile.total_pages).to.equal(2);\r",
+									"});\r",
+									"pm.test(\"Body matches total-12\", function () {\r",
+									"    pm.expect(jasonFile.total).to.equal(12);\r",
+									"});\r",
+									"pm.test(\"Verify array exists\", function () {\r",
+									"    pm.expect(jasonFile).to.have.property('data').that.is.an('array');\r",
+									"});\r",
+									"pm.test(\"Verify array length per page\", function () {\r",
+									"    pm.expect(jasonFile.data.length).to.equal(6);\r",
+									"});\r",
+									"pm.test(\"Verify array element properties\", function () {\r",
+									"    jasonFile.data.forEach(function (element) {\r",
+									"        pm.expect(element).to.have.property('id').that.is.a('number');\r",
+									"        pm.expect(element).to.have.property('email').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('first_name').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('last_name').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('avatar').that.is.a('string');\r",
+									"    });\r",
+									"    pm.test(\"Verify first element values\", function () {\r",
+									"    pm.expect(jasonFile.data[0].id).to.equal(1);\r",
+									"    pm.expect(jasonFile.data[0].email).to.equal(\"george.bluth@reqres.in\");\r",
+									"    pm.expect(jasonFile.data[0].first_name).to.equal(\"George\"); \r",
+									"    pm.expect(jasonFile.data[0].last_name).to.equal(\"Bluth\"); \r",
+									"    pm.expect(jasonFile.data[0].avatar).to.equal(\"https://reqres.in/img/faces/1-image.jpg\");\r",
+									"\r",
+									"\r",
+									"   \r",
+									"});\r",
+									" pm.test(\"Verify last element values\", function () {\r",
+									"\r",
+									"    pm.expect(jasonFile.data[5].id).to.equal(6);\r",
+									"    pm.expect(jasonFile.data[5].email).to.equal(\"tracey.ramos@reqres.in\");\r",
+									"    pm.expect(jasonFile.data[5].first_name).to.equal(\"Tracey\"); \r",
+									"    pm.expect(jasonFile.data[5].last_name).to.equal(\"Ramos\"); \r",
+									"    pm.expect(jasonFile.data[5].avatar).to.equal(\"https://reqres.in/img/faces/6-image.jpg\");\r",
+									"\r",
+									"   \r",
+									"});\r",
+									"pm.test(\"Check Content-Type header\", function () {\r",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");\r",
+									"    pm.expect(contentType).to.exist;\r",
+									"    pm.expect(contentType).to.include(\"application/json\");\r",
+									"});\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/users',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									"   \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Real}}users",
+							"host": [
+								"{{Real}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users in page  2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"    // Start your actual request\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://reqres.in/api/users?page=2',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"      \r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        \r",
+									"    });\r",
+									"\r",
+									"var jasonFile = pm.response.json();\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches page-1 pair\", function () {\r",
+									"    pm.expect(jasonFile.page).to.equal(2);\r",
+									"});\r",
+									"pm.test(\"Body matches per_page-6\", function () {\r",
+									"    pm.expect(jasonFile.per_page).to.equal(6);\r",
+									"});\r",
+									"pm.test(\"Body matches total_pages-2\", function () {\r",
+									"    pm.expect(jasonFile.total_pages).to.equal(2);\r",
+									"});\r",
+									"pm.test(\"Body matches total-12\", function () {\r",
+									"    pm.expect(jasonFile.total).to.equal(12);\r",
+									"});\r",
+									"pm.test(\"Verify array exists\", function () {\r",
+									"    pm.expect(jasonFile).to.have.property('data').that.is.an('array');\r",
+									"});\r",
+									"pm.test(\"Verify array length per page\", function () {\r",
+									"    pm.expect(jasonFile.data.length).to.equal(6);\r",
+									"});\r",
+									"pm.test(\"Verify array element properties\", function () {\r",
+									"    jasonFile.data.forEach(function (element) {\r",
+									"        pm.expect(element).to.have.property('id').that.is.a('number');\r",
+									"        pm.expect(element).to.have.property('email').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('first_name').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('last_name').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('avatar').that.is.a('string');\r",
+									"    });\r",
+									"    pm.test(\"Verify first element values\", function () {\r",
+									"    pm.expect(jasonFile.data[0].id).to.equal(7);\r",
+									"    pm.expect(jasonFile.data[0].email).to.equal(\"michael.lawson@reqres.in\");\r",
+									"    pm.expect(jasonFile.data[0].first_name).to.equal(\"Michael\"); \r",
+									"    pm.expect(jasonFile.data[0].last_name).to.equal(\"Lawson\"); \r",
+									"    pm.expect(jasonFile.data[0].avatar).to.equal(\"https://reqres.in/img/faces/7-image.jpg\");\r",
+									"\r",
+									"\r",
+									"   \r",
+									"});\r",
+									" pm.test(\"Verify last element values\", function () {\r",
+									"\r",
+									"    pm.expect(jasonFile.data[5].id).to.equal(12);\r",
+									"    pm.expect(jasonFile.data[5].email).to.equal(\"rachel.howell@reqres.in\");\r",
+									"    pm.expect(jasonFile.data[5].first_name).to.equal(\"Rachel\"); \r",
+									"    pm.expect(jasonFile.data[5].last_name).to.equal(\"Howell\"); \r",
+									"    pm.expect(jasonFile.data[5].avatar).to.equal(\"https://reqres.in/img/faces/12-image.jpg\");\r",
+									"\r",
+									"   \r",
+									"});\r",
+									"pm.test(\"Check Content-Type header\", function () {\r",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");\r",
+									"    pm.expect(contentType).to.exist;\r",
+									"    pm.expect(contentType).to.include(\"application/json\");\r",
+									"});\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/users',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									" // Start your actual request",
+									"    pm.sendRequest({",
+									"        url: 'https://reqres.in/api/users?id=1',",
+									"        method: 'GET',",
+									"        timeout: 1000, // Timeout in milliseconds",
+									"      ",
+									"    }, function (err, response) {",
+									"        if (err) {",
+									"            console.error('Request error:', err);",
+									"            return;",
+									"        }",
+									"        console.log('Response:', response.json());",
+									"        ",
+									"        ",
+									"    });",
+									"",
+									"var jasonFile = pm.response.json();",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									" pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"    pm.test(\"Verify first element values\", function () {",
+									"    pm.expect(jasonFile.data.id).to.equal(1);",
+									"    pm.expect(jasonFile.data.email).to.equal(\"george.bluth@reqres.in\");",
+									"    pm.expect(jasonFile.data.first_name).to.equal(\"George\"); ",
+									"    pm.expect(jasonFile.data.last_name).to.equal(\"Bluth\"); ",
+									"    pm.expect(jasonFile.data.avatar).to.equal(\"https://reqres.in/img/faces/1-image.jpg\");",
+									"",
+									"",
+									"   pm.test(\"Check Content-Type header\", function () {",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");",
+									"    pm.expect(contentType).to.exist;",
+									"    pm.expect(contentType).to.include(\"application/json\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"   \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?id=1",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get user Not Found page 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Start your actual request\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://reqres.in/api/users/?id=99',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"      \r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        \r",
+									"    });\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users/?id=99",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "99"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user Not Found  page 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"        url: 'https://reqres.in/api/page=2',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"      \r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        });\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/users',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users/?id=99&page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "99"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"   pm.sendRequest({",
+									"        url: 'https://reqres.in/api/users',",
+									"        method: 'GET',",
+									"        timeout: 1000, // Timeout in milliseconds",
+									"      ",
+									"    }, function (err, response) {",
+									"        if (err) {",
+									"            console.error('Request error:', err);",
+									"            return;",
+									"        }",
+									"        console.log('Response:', response.json());",
+									"        ",
+									"        ",
+									"    });",
+									"",
+									"var jasonFile = pm.response.json();",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Created\");",
+									"});",
+									"pm.test(\"Body matches name-morpheus pair\", function () {",
+									"    pm.expect(jasonFile.name).to.equal(\"morpheus\");",
+									"});",
+									"pm.test(\"Body matches Job-leader pair\", function () {",
+									"    pm.expect(jasonFile.job).to.equal(\"leader\");",
+									"});",
+									"pm.test(\"Check id and createdAt fields\", function () {",
+									"    var id = pm.response.json().id;",
+									"    var createdAt = pm.response.json().createdAt;",
+									"    ",
+									"    pm.expect(id).to.not.be.null;",
+									"    pm.expect(id).to.not.be.undefined;",
+									"    pm.expect(createdAt).to.not.be.null;",
+									"    pm.expect(createdAt).to.not.be.undefined;",
+									"});",
+									"",
+									"pm.test(\"Check Content-Type header\", function () {",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");",
+									"    pm.expect(contentType).to.exist;",
+									"    pm.expect(contentType).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/users',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									" \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"leader\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"    pm.sendRequest({",
+									"        url: 'https://reqres.in/api/users/2',",
+									"        method: 'GET',",
+									"        timeout: 1000, // Timeout in milliseconds",
+									"      ",
+									"    }, function (err, response) {",
+									"        if (err) {",
+									"            console.error('Request error:', err);",
+									"            return;",
+									"        }",
+									"        console.log('Response:', response.json());",
+									"        ",
+									"        ",
+									"    });",
+									"",
+									"",
+									"var jasonFile = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									"",
+									"pm.test(\"verify name key to value morpheus\", function () {",
+									"    pm.expect(jasonFile.name).to.be.equal(\"morpheus\");",
+									"});",
+									"",
+									"pm.test(\"verify job key to value zion resident\", function () {",
+									"    pm.expect(jasonFile.job).to.be.equal(\"zion resident\");",
+									"});",
+									"",
+									"pm.test(\"Check updatedAt field\", function () {",
+									"    var updatedAt = pm.response.json().updatedAt;",
+									" ",
+									"    pm.expect(updatedAt).to.not.be.null;",
+									"    pm.expect(updatedAt).to.not.be.undefined;",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/users',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"zion resident\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user from page 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									" pm.sendRequest({",
+									"        url: 'https://reqres.in/api/users?id=2',",
+									"        method: 'GET',",
+									"        timeout: 1000, // Timeout in milliseconds",
+									"      ",
+									"    }, function (err, response) {",
+									"        if (err) {",
+									"            console.error('Request error:', err);",
+									"            return;",
+									"        }",
+									"        console.log('Response:', response.json());",
+									"        ",
+									"        ",
+									"    });",
+									"",
+									"",
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									"",
+									"pm.test(\"Verify response body is empty\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/users',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									"   \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users?id=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user from page 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									" pm.sendRequest({",
+									"        url: 'https://reqres.in/api/users?id=2',",
+									"        method: 'GET',",
+									"        timeout: 1000, // Timeout in milliseconds",
+									"      ",
+									"    }, function (err, response) {",
+									"        if (err) {",
+									"            console.error('Request error:', err);",
+									"            return;",
+									"        }",
+									"        console.log('Response:', response.json());",
+									"        ",
+									"        ",
+									"    });",
+									"",
+									"",
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									"",
+									"pm.test(\"Verify response body is empty\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/users',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    // Start your actual request\r",
+									"  \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users?id=7&page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "7"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unknown Resources",
+			"item": [
+				{
+					"name": "Get all resources",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://reqres.in/api/unknown',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"      \r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        \r",
+									"    });\r",
+									"\r",
+									"\r",
+									"var jasonFile = pm.response.json();\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches page-1 pair\", function () {\r",
+									"    pm.expect(jasonFile.page).to.equal(1);\r",
+									"});\r",
+									"pm.test(\"Body matches per_page-6\", function () {\r",
+									"    pm.expect(jasonFile.per_page).to.equal(6);\r",
+									"});\r",
+									"pm.test(\"Body matches total_pages-2\", function () {\r",
+									"    pm.expect(jasonFile.total_pages).to.equal(2);\r",
+									"});\r",
+									"pm.test(\"Body matches total-12\", function () {\r",
+									"    pm.expect(jasonFile.total).to.equal(12);\r",
+									"});\r",
+									"pm.test(\"Verify array exists\", function () {\r",
+									"    pm.expect(jasonFile).to.have.property('data').that.is.an('array');\r",
+									"});\r",
+									"pm.test(\"Verify array length per page\", function () {\r",
+									"    pm.expect(jasonFile.data.length).to.equal(6);\r",
+									"});\r",
+									"pm.test(\"Verify array element properties\", function () {\r",
+									"    jasonFile.data.forEach(function (element) {\r",
+									"        pm.expect(element).to.have.property('id').that.is.a('number');\r",
+									"        pm.expect(element).to.have.property('name').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('year').that.is.a('number');\r",
+									"        pm.expect(element).to.have.property('color').that.is.a('string');\r",
+									"        pm.expect(element).to.have.property('pantone_value').that.is.a('string');\r",
+									" });\r",
+									" });\r",
+									"    pm.test(\"Verify first element values\", function () {\r",
+									"    pm.expect(jasonFile.data[0].id).to.equal(1);\r",
+									"    pm.expect(jasonFile.data[0].name).to.equal(\"cerulean\");\r",
+									"    pm.expect(jasonFile.data[0].year).to.equal(2000); \r",
+									"    pm.expect(jasonFile.data[0].color).to.equal(\"#98B2D1\"); \r",
+									"    pm.expect(jasonFile.data[0].pantone_value).to.equal(\"15-4020\");\r",
+									"\r",
+									"\r",
+									"   \r",
+									"});\r",
+									"\r",
+									"\r",
+									"    pm.test(\"Verify last element values\", function () {\r",
+									"    pm.expect(jasonFile.data[5].id).to.equal(6);\r",
+									"    pm.expect(jasonFile.data[5].name).to.equal(\"blue turquoise\");\r",
+									"    pm.expect(jasonFile.data[5].year).to.equal(2005); \r",
+									"    pm.expect(jasonFile.data[5].color).to.equal(\"#53B0AE\"); \r",
+									"    pm.expect(jasonFile.data[5].pantone_value).to.equal(\"15-5217\");\r",
+									"\r",
+									"   \r",
+									"});\r",
+									"pm.test(\"Check Content-Type header\", function () {\r",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");\r",
+									"    pm.expect(contentType).to.exist;\r",
+									"    pm.expect(contentType).to.include(\"application/json\");\r",
+									"\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/unknown',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/unknown",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"unknown"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"    pm.sendRequest({",
+									"        url: 'https://reqres.in/api/unknown',",
+									"        method: 'GET',",
+									"        timeout: 1000, // Timeout in milliseconds",
+									"      ",
+									"    }, function (err, response) {",
+									"        if (err) {",
+									"            console.error('Request error:', err);",
+									"            return;",
+									"        }",
+									"        console.log('Response:', response.json());",
+									"        ",
+									"        ",
+									"    });",
+									"",
+									"",
+									"",
+									"var jasonFile = pm.response.json();",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									" pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"    pm.test(\"Verify element values\", function () {",
+									"    pm.expect(jasonFile.data.id).to.equal(1);",
+									"    pm.expect(jasonFile.data.name).to.equal(\"cerulean\");",
+									"    pm.expect(jasonFile.data.year).to.equal(2000); ",
+									"    pm.expect(jasonFile.data.color).to.equal(\"#98B2D1\"); ",
+									"    pm.expect(jasonFile.data.pantone_value).to.equal(\"15-4020\");",
+									"",
+									"",
+									"   pm.test(\"Check Content-Type header\", function () {",
+									"    var contentType = pm.response.headers.get(\"Content-Type\");",
+									"    pm.expect(contentType).to.exist;",
+									"    pm.expect(contentType).to.include(\"application/json\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/unknown?id=1',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/unknown?id=1",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"unknown"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get resources Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://reqres.in/api/unknown?id=23',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"      \r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        \r",
+									"    });\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://reqres.in/api/unknown/',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/unknown?id=23",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"unknown"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "23"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication From Github",
+			"item": [
+				{
+					"name": "Authorized Getting repos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Check network availability before starting request\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://api.github.com/users/ping',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Start your actual request\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://api.github.com/users/repos',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"        headers: {\r",
+									"            'Authorization': '{{token}}'\r",
+									"        }\r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        if (response.code === 401) {\r",
+									"            console.error('Authentication error:', response.json());\r",
+									"        }\r",
+									"        \r",
+									"    });"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{github_users}}/repos",
+							"host": [
+								"{{github_users}}"
+							],
+							"path": [
+								"repos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unathorized Getting repos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://api.github.com/user/repos',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"        headers: {\r",
+									"            'Authorization': '123'\r",
+									"        }\r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        if (response.code === 401) {\r",
+									"            console.error('Whops! Authentication error:', response.json());\r",
+									"        }\r",
+									"        \r",
+									"    });"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{github_users}}/repos",
+							"host": [
+								"{{github_users}}"
+							],
+							"path": [
+								"repos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific repo Authorized",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'https://api.github.com/users/ping',\r",
+									"    method: 'GET',\r",
+									"    timeout: 1000 // Timeout in milliseconds\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Network error:', err);\r",
+									"        return;\r",
+									"    }\r",
+									"    console.log('Network is available');\r",
+									"    \r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://api.github.com/user/repos/:owner/:repo',\r",
+									"        method: 'GET',\r",
+									"        timeout: 1000, // Timeout in milliseconds\r",
+									"        headers: {\r",
+									"            'Authorization': '123'\r",
+									"        }\r",
+									"    }, function (err, response) {\r",
+									"        if (err) {\r",
+									"            console.error('Request error:', err);\r",
+									"            return;\r",
+									"        }\r",
+									"        console.log('Response:', response.json());\r",
+									"        \r",
+									"        if (response.code === 401) {\r",
+									"            console.error('Whops! Authentication error:', response.json());\r",
+									"        }\r",
+									"        \r",
+									"    });"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.github+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{github_repo}}/:owner/:repo",
+							"host": [
+								"{{github_repo}}"
+							],
+							"path": [
+								":owner",
+								":repo"
+							],
+							"variable": [
+								{
+									"key": "owner",
+									"value": "ZeyadHassib"
+								},
+								{
+									"key": "repo",
+									"value": "iti-benisuef"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

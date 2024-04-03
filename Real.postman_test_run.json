@@ -1,0 +1,962 @@
+{
+	"id": "ba398b2c-72e7-4bd8-81cb-221ad293f025",
+	"name": "Real",
+	"timestamp": "2024-04-03T15:29:18.950Z",
+	"collection_id": "33935759-096df513-00ff-4cac-bfea-3e0ae1e468ac",
+	"folder_id": 0,
+	"environment_id": "33935759-303adf05-b325-4d5f-bc9c-84541bba578d",
+	"totalPass": 79,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-04-03T15:29:10.518Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2b31e106-f241-4511-ae14-f656658da6ab",
+			"name": "Register - Unsuccessful",
+			"url": "https://reqres.in/api/register",
+			"time": 108,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 250ms": true,
+				"Verify Unsuccessful Registration request status code": true,
+				"Verify Unsuccessful Registration request error message value": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 250ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify Unsuccessful Registration request status code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify Unsuccessful Registration request error message value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				108
+			],
+			"allTests": [
+				{
+					"Response time is less than 250ms": true,
+					"Verify Unsuccessful Registration request status code": true,
+					"Verify Unsuccessful Registration request error message value": true
+				}
+			]
+		},
+		{
+			"id": "e239bf78-67f9-4c36-9bb0-92fcf6d01aa9",
+			"name": "Register - Successful",
+			"url": "https://reqres.in/api/register",
+			"time": 112,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is a valid JSON": true,
+				"Response time is less than 250ms": true,
+				"Response body has correct properties": true,
+				"Response body has correct values": true,
+				"Check Content-Type header": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is a valid JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 250ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body has correct properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body has correct values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				112
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is a valid JSON": true,
+					"Response time is less than 250ms": true,
+					"Response body has correct properties": true,
+					"Response body has correct values": true,
+					"Check Content-Type header": true
+				}
+			]
+		},
+		{
+			"id": "9c873c84-1837-4af3-acfd-c49d3e5ea5a8",
+			"name": "Login Successful",
+			"url": "https://reqres.in/api/login",
+			"time": 112,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body has correct values": true,
+				"Check Content-Type header": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body has correct values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				112
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body has correct values": true,
+					"Check Content-Type header": true
+				}
+			]
+		},
+		{
+			"id": "e281894a-e879-41a2-b061-aaed15d09037",
+			"name": "Login Unsucessful",
+			"url": "https://reqres.in/api/login",
+			"time": 107,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Verify Unsuccessful Login request status code": true,
+				"Verify Unsuccessful Login request error message value": true
+			},
+			"testPassFailCounts": {
+				"Verify Unsuccessful Login request status code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify Unsuccessful Login request error message value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				107
+			],
+			"allTests": [
+				{
+					"Verify Unsuccessful Login request status code": true,
+					"Verify Unsuccessful Login request error message value": true
+				}
+			]
+		},
+		{
+			"id": "06753344-5513-45e6-9664-d1f9696f463c",
+			"name": "Get all users in page 1",
+			"url": "https://reqres.in/api/users",
+			"time": 73,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 250ms": true,
+				"Status code is 200": true,
+				"Body matches page-1 pair": true,
+				"Body matches per_page-6": true,
+				"Body matches total_pages-2": true,
+				"Body matches total-12": true,
+				"Verify array exists": true,
+				"Verify array length per page": true,
+				"Verify first element values": true,
+				"Verify last element values": true,
+				"Check Content-Type header": true,
+				"Verify array element properties": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 250ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches page-1 pair": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches per_page-6": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches total_pages-2": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches total-12": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array exists": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array length per page": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify first element values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify last element values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array element properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				73
+			],
+			"allTests": [
+				{
+					"Response time is less than 250ms": true,
+					"Status code is 200": true,
+					"Body matches page-1 pair": true,
+					"Body matches per_page-6": true,
+					"Body matches total_pages-2": true,
+					"Body matches total-12": true,
+					"Verify array exists": true,
+					"Verify array length per page": true,
+					"Verify first element values": true,
+					"Verify last element values": true,
+					"Check Content-Type header": true,
+					"Verify array element properties": true
+				}
+			]
+		},
+		{
+			"id": "195727a0-a5ab-42ef-9a26-a95250c554e8",
+			"name": "Get all users in page  2",
+			"url": "https://reqres.in/api/users?page=2",
+			"time": 77,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 200ms": true,
+				"Status code is 200": true,
+				"Body matches page-1 pair": true,
+				"Body matches per_page-6": true,
+				"Body matches total_pages-2": true,
+				"Body matches total-12": true,
+				"Verify array exists": true,
+				"Verify array length per page": true,
+				"Verify first element values": true,
+				"Verify last element values": true,
+				"Check Content-Type header": true,
+				"Verify array element properties": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches page-1 pair": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches per_page-6": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches total_pages-2": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches total-12": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array exists": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array length per page": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify first element values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify last element values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array element properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				77
+			],
+			"allTests": [
+				{
+					"Response time is less than 200ms": true,
+					"Status code is 200": true,
+					"Body matches page-1 pair": true,
+					"Body matches per_page-6": true,
+					"Body matches total_pages-2": true,
+					"Body matches total-12": true,
+					"Verify array exists": true,
+					"Verify array length per page": true,
+					"Verify first element values": true,
+					"Verify last element values": true,
+					"Check Content-Type header": true,
+					"Verify array element properties": true
+				}
+			]
+		},
+		{
+			"id": "9bc75fdc-e4b9-41bb-9ade-bc6dfc6e596e",
+			"name": "Get data",
+			"url": "https://reqres.in/api/users?id=1",
+			"time": 109,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 200ms": true,
+				"Status code is 200": true,
+				"Check Content-Type header": true,
+				"Verify first element values": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify first element values": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				109
+			],
+			"allTests": [
+				{
+					"Response time is less than 200ms": true,
+					"Status code is 200": true,
+					"Check Content-Type header": true,
+					"Verify first element values": true
+				}
+			]
+		},
+		{
+			"id": "a8850406-8168-4c38-ac89-7ceadbc652df",
+			"name": "Get user Not Found page 1",
+			"url": "https://reqres.in/api/users/?id=99",
+			"time": 111,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code name has string": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code name has string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				111
+			],
+			"allTests": [
+				{
+					"Status code name has string": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a4b2d1b3-04e9-41a0-bfdf-4deb136f2bb1",
+			"name": "Get user Not Found  page 2",
+			"url": "https://reqres.in/api/users/?id=99&page=2",
+			"time": 125,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code name has string": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code name has string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				125
+			],
+			"allTests": [
+				{
+					"Status code name has string": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "cee3306e-82f1-47e9-ae35-ad3e322d8198",
+			"name": "Create user",
+			"url": "https://reqres.in/api/users",
+			"time": 101,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Response time is less than 220ms": true,
+				"Status code name has string": true,
+				"Body matches name-morpheus pair": true,
+				"Body matches Job-leader pair": true,
+				"Check id and createdAt fields": true,
+				"Check Content-Type header": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 220ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches name-morpheus pair": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches Job-leader pair": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check id and createdAt fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				101
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Response time is less than 220ms": true,
+					"Status code name has string": true,
+					"Body matches name-morpheus pair": true,
+					"Body matches Job-leader pair": true,
+					"Check id and createdAt fields": true,
+					"Check Content-Type header": true
+				}
+			]
+		},
+		{
+			"id": "b3a4f6c3-d5af-422a-8280-50d7fe1daaa0",
+			"name": "Update user",
+			"url": "https://reqres.in/api/users/2",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful PUT request": true,
+				"verify name key to value morpheus": true,
+				"verify job key to value zion resident": true,
+				"Check updatedAt field": true
+			},
+			"testPassFailCounts": {
+				"Successful PUT request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verify name key to value morpheus": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verify job key to value zion resident": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check updatedAt field": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106
+			],
+			"allTests": [
+				{
+					"Successful PUT request": true,
+					"verify name key to value morpheus": true,
+					"verify job key to value zion resident": true,
+					"Check updatedAt field": true
+				}
+			]
+		},
+		{
+			"id": "31d3e7fb-422c-4fe0-969d-565fca7bbb19",
+			"name": "Delete user from page 1",
+			"url": "https://reqres.in/api/users?id=2",
+			"time": 106,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Successful DELETE request": true,
+				"Verify response body is empty": true
+			},
+			"testPassFailCounts": {
+				"Successful DELETE request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify response body is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106
+			],
+			"allTests": [
+				{
+					"Successful DELETE request": true,
+					"Verify response body is empty": true
+				}
+			]
+		},
+		{
+			"id": "28526f69-fc93-41a3-bde8-f0aa1badeabb",
+			"name": "Delete user from page 2",
+			"url": "https://reqres.in/api/users?id=7&page=2",
+			"time": 109,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Successful DELETE request": true,
+				"Verify response body is empty": true
+			},
+			"testPassFailCounts": {
+				"Successful DELETE request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify response body is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				109
+			],
+			"allTests": [
+				{
+					"Successful DELETE request": true,
+					"Verify response body is empty": true
+				}
+			]
+		},
+		{
+			"id": "c253e98d-35a0-4c11-90ae-42d9081100b7",
+			"name": "Get all resources",
+			"url": "https://reqres.in/api/unknown",
+			"time": 64,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 200ms": true,
+				"Status code is 200": true,
+				"Body matches page-1 pair": true,
+				"Body matches per_page-6": true,
+				"Body matches total_pages-2": true,
+				"Body matches total-12": true,
+				"Verify array exists": true,
+				"Verify array length per page": true,
+				"Verify array element properties": true,
+				"Verify first element values": true,
+				"Verify last element values": true,
+				"Check Content-Type header": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches page-1 pair": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches per_page-6": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches total_pages-2": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches total-12": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array exists": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array length per page": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify array element properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify first element values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify last element values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				64
+			],
+			"allTests": [
+				{
+					"Response time is less than 200ms": true,
+					"Status code is 200": true,
+					"Body matches page-1 pair": true,
+					"Body matches per_page-6": true,
+					"Body matches total_pages-2": true,
+					"Body matches total-12": true,
+					"Verify array exists": true,
+					"Verify array length per page": true,
+					"Verify array element properties": true,
+					"Verify first element values": true,
+					"Verify last element values": true,
+					"Check Content-Type header": true
+				}
+			]
+		},
+		{
+			"id": "fae9357b-c7d8-49e8-92c3-28038c413812",
+			"name": "Get data",
+			"url": "https://reqres.in/api/unknown?id=1",
+			"time": 69,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 200ms": true,
+				"Status code is 200": true,
+				"Check Content-Type header": true,
+				"Verify element values": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify element values": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				69
+			],
+			"allTests": [
+				{
+					"Response time is less than 200ms": true,
+					"Status code is 200": true,
+					"Check Content-Type header": true,
+					"Verify element values": true
+				}
+			]
+		},
+		{
+			"id": "5067c608-8d0b-4f30-b906-f491ec09419a",
+			"name": "Get resources Not Found",
+			"url": "https://reqres.in/api/unknown?id=23",
+			"time": 114,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code name has string": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code name has string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				114
+			],
+			"allTests": [
+				{
+					"Status code name has string": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ec349521-8c77-4c2c-8696-1179c7ea997e",
+			"name": "Authorized Getting repos",
+			"url": "https://api.github.com/user/repos",
+			"time": 310,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				310
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "266fe53e-4e38-402a-89f3-15c8cf43bc5a",
+			"name": "Unathorized Getting repos",
+			"url": "https://api.github.com/user/repos",
+			"time": 209,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				209
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "77345b2f-b3e4-4f0a-8609-09c2620a253c",
+			"name": "Get Specific repo Authorized",
+			"url": "https://api.github.com/repos/ZeyadHassib/iti-benisuef",
+			"time": 259,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				259
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2381,
+	"collection": {
+		"requests": [
+			{
+				"id": "2b31e106-f241-4511-ae14-f656658da6ab",
+				"method": "POST"
+			},
+			{
+				"id": "e239bf78-67f9-4c36-9bb0-92fcf6d01aa9",
+				"method": "POST"
+			},
+			{
+				"id": "9c873c84-1837-4af3-acfd-c49d3e5ea5a8",
+				"method": "POST"
+			},
+			{
+				"id": "e281894a-e879-41a2-b061-aaed15d09037",
+				"method": "POST"
+			},
+			{
+				"id": "06753344-5513-45e6-9664-d1f9696f463c",
+				"method": "GET"
+			},
+			{
+				"id": "195727a0-a5ab-42ef-9a26-a95250c554e8",
+				"method": "GET"
+			},
+			{
+				"id": "9bc75fdc-e4b9-41bb-9ade-bc6dfc6e596e",
+				"method": "GET"
+			},
+			{
+				"id": "a8850406-8168-4c38-ac89-7ceadbc652df",
+				"method": "GET"
+			},
+			{
+				"id": "a4b2d1b3-04e9-41a0-bfdf-4deb136f2bb1",
+				"method": "GET"
+			},
+			{
+				"id": "cee3306e-82f1-47e9-ae35-ad3e322d8198",
+				"method": "POST"
+			},
+			{
+				"id": "b3a4f6c3-d5af-422a-8280-50d7fe1daaa0",
+				"method": "PUT"
+			},
+			{
+				"id": "31d3e7fb-422c-4fe0-969d-565fca7bbb19",
+				"method": "DELETE"
+			},
+			{
+				"id": "28526f69-fc93-41a3-bde8-f0aa1badeabb",
+				"method": "DELETE"
+			},
+			{
+				"id": "c253e98d-35a0-4c11-90ae-42d9081100b7",
+				"method": "GET"
+			},
+			{
+				"id": "fae9357b-c7d8-49e8-92c3-28038c413812",
+				"method": "GET"
+			},
+			{
+				"id": "5067c608-8d0b-4f30-b906-f491ec09419a",
+				"method": "GET"
+			},
+			{
+				"id": "ec349521-8c77-4c2c-8696-1179c7ea997e",
+				"method": "GET"
+			},
+			{
+				"id": "266fe53e-4e38-402a-89f3-15c8cf43bc5a",
+				"method": "GET"
+			},
+			{
+				"id": "77345b2f-b3e4-4f0a-8609-09c2620a253c",
+				"method": "GET"
+			}
+		]
+	}
+}
